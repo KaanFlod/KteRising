@@ -1,13 +1,14 @@
-![About KteRising](https://cdn.modrinth.com/data/cached_images/93c6ee3bdf4bcff2fb08ee675d03cbaae897de10_0.webp)
-**KteRising** is a professional Minecraft plugin that redefines the classic Lava Rising concept with a modern, performance-focused and highly customizable system. It transforms simple rising lava into a fast-paced, strategic and competitive gameplay experience.
-
-Thanks to its optimized architecture, KteRising delivers smooth performance even on high-population servers. With advanced game modes, voting systems, stat tracking and deep configuration support, it adapts perfectly to any server style.
-
 [![GitHub release](https://img.shields.io/github/v/release/KteProject/KteRising?style=for-the-badge)](https://github.com/KteProject/KteRising/releases)
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.20.4+-blue?style=for-the-badge)](https://papermc.io/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Discord](https://img.shields.io/discord/1133365192756039782?style=for-the-badge)]([https://discord.gg/XXXXXX](https://discord.gg/saScDMCzts))
 ![## Features](https://cdn.modrinth.com/data/cached_images/668cadd3c6f16fbdfd59f5cd6eee30534898c26b.png)
+
+![About KteRising](https://cdn.modrinth.com/data/cached_images/93c6ee3bdf4bcff2fb08ee675d03cbaae897de10_0.webp)
+**KteRising** is a professional Minecraft plugin that redefines the classic Lava Rising concept with a modern, performance-focused and highly customizable system. It transforms simple rising lava into a fast-paced, strategic and competitive gameplay experience.
+
+Thanks to its optimized architecture, KteRising delivers smooth performance even on high-population servers. With advanced game modes, voting systems, stat tracking and deep configuration support, it adapts perfectly to any server style.
+
 ### 🌋 **Lava Rising System**
 
 Lava starts rising after a defined countdown and increases by one layer with each rise. The rising speed is fully configurable via the config. The lava level automatically determines when PvP is enabled and when the world border begins to shrink. Thanks to the chunk cache + pipeline method, the system runs smoothly and stably.
