@@ -59,6 +59,7 @@ Rewards can be assigned for:
 A full team system is currently under development. Players will be able to create or join teams, cooperate strategically, and compete in organized group-based gameplay modes. This feature will integrate seamlessly with the existing game flow.
 
 ![## PlaceholderAPI](https://cdn.modrinth.com/data/cached_images/8e5ffd0e5e22ce9c997cc55753cbac038339f830.png)
+
 KteRising provides a rich set of dynamic placeholders for use with PlaceholderAPI, scoreboards, tab lists, holograms, and custom messages.
 
 | Placeholder              | Description             |
@@ -76,6 +77,7 @@ KteRising provides a rich set of dynamic placeholders for use with PlaceholderAP
 | `%kterising_match%`      | Current match state     |
 
 ![Commands and Permission](https://cdn.modrinth.com/data/cached_images/c144c49b4b8ca9dfbb81004cdbff8914c1f8a6a3.png)
+
 Below is the full list of KteRising commands along with their required permissions.
 
 | Command                     | Description                                  | Permission                 |
@@ -89,6 +91,7 @@ Below is the full list of KteRising commands along with their required permissio
 | `/kterising reload`         | Reloads configuration and message files      | `kterising.command.reload` |
 
 ![Config](https://cdn.modrinth.com/data/cached_images/3a8880c266a3f94c469540126726946eafadff85.png)
+
 This section contains all configuration files used to fully customize KteRising’s gameplay, systems, and visual behavior.
 
 ## Config.yml
