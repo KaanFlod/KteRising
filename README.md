@@ -2,10 +2,11 @@
 **KteRising** is a professional Minecraft plugin that redefines the classic Lava Rising concept with a modern, performance-focused and highly customizable system. It transforms simple rising lava into a fast-paced, strategic and competitive gameplay experience.
 
 Thanks to its optimized architecture, KteRising delivers smooth performance even on high-population servers. With advanced game modes, voting systems, stat tracking and deep configuration support, it adapts perfectly to any server style.
+
 [![GitHub release](https://img.shields.io/github/v/release/KteProject/KteRising?style=for-the-badge)](https://github.com/KteProject/KteRising/releases)
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.20.4+-blue?style=for-the-badge)](https://papermc.io/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Discord](https://img.shields.io/discord/1133365192756039782?style=for-the-badge)](https://discord.gg/XXXXXX)
+[![Discord](https://img.shields.io/discord/1133365192756039782?style=for-the-badge)]([https://discord.gg/XXXXXX](https://discord.gg/saScDMCzts))
 ![## Features](https://cdn.modrinth.com/data/cached_images/668cadd3c6f16fbdfd59f5cd6eee30534898c26b.png)
 ### 🌋 **Lava Rising System**
 
