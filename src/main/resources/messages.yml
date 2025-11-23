@@ -1,0 +1,67 @@
+other:
+  no-permission: "<red>⛔ You don't have permission to use this command."
+  player-only: "<red>⛔ This command can only be used by players."
+
+placeholderapi:
+  pvp-enabled: "<green>Enabled"
+  pvp-disabled: "<red>Disabled"
+  mode-not-selected: "<gray>Not Selected"
+
+command:
+  help-command:
+    - "<gold><bold>────────── KteRising Help ──────────"
+    - "<gray>Available commands:"
+    - "<gold>/kterising start <gray>- Start the game"
+    - "<gold>/kterising mode <gray>- Change the game mode"
+    - "<gold>/kterising skip <gray>- Skip time forward"
+    - "<gold>/kterising stats <gray>- Shows the statistics of a player."
+    - "<gold>/kterising reload <gray>- Reload configuration files"
+    - "<gold>/kterising freeze <gray>- Freeze/unfreeze lava rising"
+    - "<gold><bold>──────────────────────────────────────"
+  start-command: "<green>✔ The game has started!"
+  mode-command: "<green>✔ Game mode changed to <gold><mode><green>."
+  mode-command-error: "<red>✖ This mode does not exist: <gold><mode>"
+  reload-command: "<green>✔ Configuration files reloaded. <gray>(Some settings may require a restart.)"
+  command-error: "<red>✖ This command can only be used during an active game."
+
+titles:
+  finish-game:
+    title: "<gold><bold>GAME OVER!"
+    subtitle: "<gray>Winner: <white><winner>"
+  pvp-allow:
+    title: "<red><bold>PVP ENABLED!"
+    subtitle: "<gray>Be careful out there."
+  worldborder-shrink:
+    title: "<red><bold>WORLD BORDER!"
+    subtitle: "<gold>The safe zone is shrinking!"
+  start-game:
+    title: "<green><bold>GAME STARTED!"
+    subtitle: "<gray>Good luck and have fun!"
+  lavarising:
+    title: "<gold><bold>LAVA IS RISING!"
+    subtitle: "<gray>Stay above the danger..."
+  skip:
+    title: "<yellow><bold>⏭ TIME SKIPPED!"
+    subtitle: "<gray>Lava will rise in <white>3 seconds<gray>."
+  freeze-on:
+    title: "<red><bold>LAVA FROZEN!"
+    subtitle: "<gray>The rising has been paused."
+  freeze-off:
+    title: "<green><bold>LAVA RESUMED!"
+    subtitle: "<gray>The lava continues to rise."
+
+action-bar:
+  autostart-countdown: "<yellow>Starting in <white><seconds> <gray>seconds..."
+  max-height: "<red>You cannot build at this height."
+
+stats:
+  header: "<gold><bold><player>'s Statistics"
+  kill: "<gray>• <white>Kills: <green><kill>"
+  death: "<gray>• <white>Deaths: <red><death>"
+  win: "<gray>• <white>Wins: <blue><win>"
+  not-found: "<red>This player has no recorded stats."
+
+vote:
+  vote-item: "<green>Vote"
+  vote: "<green>You voted for the <gold><mode></gold> mode!"
+  already-voted: "<red>You have already voted for this mode!"

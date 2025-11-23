@@ -1,0 +1,378 @@
+############################################################
+#                                                          #
+#                   KTE RISING CONFIGURATION               #
+#      This file controls every system of the plugin.      #
+#   Read the descriptions carefully before changing them.  #
+#                                                          #
+############################################################
+
+plugin-configurations:
+  # Checks for new plugin updates on startup.
+  # Recommended: Keep enabled, lets you know when a new version is available.
+  update-check: true
+
+  # Enables anonymous performance analytics through bStats.
+  # Does NOT collect personal information — safe to keep enabled.
+  bstats-metrics: true
+
+
+# ─────────────────────────────────────────────────────────────
+#  📌 IMPORTANT — SQLITE USERS READ THIS
+#
+#  SQLite creates 3 files automatically:
+#     • stats.db        → Main database
+#     • stats.db-wal    → Write-Ahead-Log (performance booster)
+#     • stats.db-shm    → Shared memory file
+#
+#  ⚠ DO NOT DELETE THESE FILES manually.
+#  They are REQUIRED for the database to work safely and fast.
+#  Deleting them may corrupt player statistics permanently.
+# ─────────────────────────────────────────────────────────────
+database:
+  # Choose the storage engine:
+  # SQLITE → Lightweight, recommended for small/medium servers.
+  # MYSQL  → External database, recommended for large networks.
+  type: SQLITE
+
+  sqlite:
+    # File name for local SQLite database.
+    file: "stats.db"
+
+  mysql:
+    # MySQL connection settings (only used if type = MYSQL)
+    host: "localhost"
+    port: 3306
+    database: "kterising"
+    user: "root"
+    password: "password"
+    # Enables Secure Socket Layer encryption.
+    ssl: false
+    # Maximum size of the database connection pool.
+    pool-size: 10
+
+
+game-configurations:
+  # Time (in seconds) before lava begins rising in CLASSIC mode.
+  # Recommended: 600 (10 minutes) for balanced gameplay.
+  classic-start-duration: 600
+
+  # Time (in seconds) before lava begins rising in OP modes.
+  # OP modes are faster-paced, so this value is lower.
+  op-start-duration: 30
+
+  # The Y-level where lava starts rising from.
+  # Lower = longer game, Higher = shorter game.
+  lava-start-height: 0
+
+  # Maximum height lava can reach.
+  # ⚠ This value MUST NOT exceed world-configurations.world-height.
+  lava-finish-height: 180
+
+  # Delay between each lava layer increase.
+  # Example: 2 = Lava rises 1 block every 2 seconds.
+  lava-delay: 2
+
+  # The exact Y-level at which PvP becomes enabled.
+  # Set below lava-finish-height or PvP may never enable.
+  pvp-allow-height: 70
+
+  # If enabled → All drops go directly into player inventory.
+  # If disabled → Blocks drop items on the ground normally.
+  auto-pickup: true
+
+  # If enabled → Ores automatically smelt when mined.
+  # Example: Iron Ore → Iron Ingot, Gold Ore → Gold Ingot.
+  auto-smelt: true
+
+
+world-configurations:
+  # Name of the world the game will run in.
+  # If renamed, update accordingly.
+  world-name: "world"
+
+  # WorldBorder radius used for the gameplay area.
+  # Larger border = longer game duration.
+  world-border: 100
+
+  # Maximum build height allowed for players during the match.
+  # Anything above this Y-level cannot be placed.
+  world-height: 180
+
+
+autostart-configuration:
+  # If true → Game automatically starts when enough players join.
+  enabled: true
+
+  # Number of players required for autostart to activate.
+  need-player-count: 5
+
+  # Countdown (in seconds) after required players are online.
+  autostart-countdown: 30
+
+
+rewards-configuration:
+  # Enables the reward system (commands executed on kill / win / death)
+  enabled: true
+
+  # Commands executed when a player kills another player.
+  kill-player:
+    - "eco give %player% 5"
+
+  # Commands executed when a player wins the game.
+  win-player:
+    - "eco give %player% 3"
+
+  # Commands executed when a player dies.
+  death-player:
+    - "eco give %player% -3"
+
+
+voting-menu-configuration:
+  # Enables /vote system
+  enabled: true
+
+  # Size of vote menu (rows)
+  gui-row: 3
+
+  # Title shown at the top of the GUI
+  gui-title: "<green>Vote Menu"
+
+############################################################
+#                     MODE CONFIGURATION                   #
+#                                                          #
+# This section controls ALL available game modes.          #
+# Each mode defines:                                       #
+#   • How it appears in the voting menu                    #
+#   • Which items players receive in that mode             #
+#   • Countdown duration before lava starts                #
+#   • Whether the mode is enabled or disabled              #
+#                                                          #
+# You can safely:                                          #
+#   ✔ Add new modes                                        #
+#   ✔ Disable existing ones                                #
+#   ✔ Change GUI items & slots                             #
+#   ✔ Modify items, enchantments, and labels               #
+#                                                          #
+# DO NOT rename the mode keys (classic, elytra, etc.)      #
+# unless you fully understand how the plugin loads modes.  #
+#                                                          #
+# The structure of each mode:                              #
+#   enabled: true/false         → Toggles the mode         #
+#   label: "<color>Name"        → Text displayed in GUI    #
+#   description:                → Lore shown under the item#
+#   gui-slot: number            → Position inside menu     #
+#   gui-item: MATERIAL          → Icon displayed in GUI    #
+#   countdown: seconds          → Lava start timer         #
+#   placeholder-label: string   → Used in PlaceholderAPI   #
+#   items:                      → Items given to players   #
+#                                                          #
+# You are free to customize EVERYTHING inside "items".     #
+# The plugin automatically builds mode items from this     #
+# configuration. No Java edits needed.                     #
+############################################################
+modes-configuration:
+
+  classic:
+    enabled: true
+    label: "<green>Classic"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 10
+    gui-item: NETHERITE_PICKAXE
+    countdown: 600
+    placeholder-label: "Classic"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 16
+      - material: OAK_LOG
+        amount: 16
+
+  op:
+    enabled: true
+    label: "<aqua>OP"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 11
+    gui-item: DIAMOND
+    countdown: 30
+    placeholder-label: "<aqua>OP"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 64
+      - material: DIAMOND
+        amount: 64
+      - material: IRON_INGOT
+        amount: 64
+      - material: COBBLESTONE
+        amount: 576
+      - material: OAK_LOG
+        amount: 64
+
+  elytra:
+    enabled: true
+    label: "<yellow>Elytra"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 12
+    gui-item: ELYTRA
+    countdown: 600
+    placeholder-label: "<yellow>Elytra"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 16
+      - material: OAK_LOG
+        amount: 16
+      - material: ELYTRA
+        amount: 1
+        name: "<gold><bold>LavaRising Elytra"
+      - material: FIREWORK_ROCKET
+        amount: 6
+
+  elytraop:
+    enabled: true
+    label: "<red>ElytraOP"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 13
+    gui-item: ELYTRA
+    countdown: 30
+    placeholder-label: "<red>ElytraOP"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 64
+      - material: DIAMOND
+        amount: 64
+      - material: IRON_INGOT
+        amount: 64
+      - material: OAK_LOG
+        amount: 64
+      - material: FIREWORK_ROCKET
+        amount: 16
+      - material: ELYTRA
+        amount: 1
+        name: "<gold><bold>LavaRising Elytra"
+      - material: COBBLESTONE
+        amount: 576
+
+  trident:
+    enabled: true
+    label: "<blue>Trident"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 14
+    gui-item: TRIDENT
+    countdown: 600
+    placeholder-label: "<blue>Trident"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 16
+      - material: OAK_LOG
+        amount: 16
+      - material: TRIDENT
+        amount: 1
+        name: "<aqua>Riptide Trident"
+        enchantments:
+          - "riptide:3"
+      - material: TRIDENT
+        amount: 1
+        name: "<aqua>Loyalty Trident"
+        enchantments:
+          - "loyalty:3"
+
+  tridentop:
+    enabled: true
+    label: "<dark_aqua>TridentOP"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 15
+    gui-item: TRIDENT
+    countdown: 30
+    placeholder-label: "<dark_aqua>TridentOP"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>LavaRising Pickaxe"
+        enchantments:
+          - "efficiency:5"
+      - material: COOKED_BEEF
+        amount: 64
+      - material: DIAMOND
+        amount: 64
+      - material: IRON_INGOT
+        amount: 64
+      - material: COBBLESTONE
+        amount: 576
+      - material: OAK_LOG
+        amount: 64
+      - material: TRIDENT
+        amount: 1
+        name: "<aqua>Riptide Trident"
+        enchantments:
+          - "riptide:3"
+      - material: TRIDENT
+        amount: 1
+        name: "<aqua>Loyalty Trident"
+        enchantments:
+          - "loyalty:3"
+
+  ultraop:
+    enabled: true
+    label: "<gold>UltraOP"
+    description:
+      - "<green>Vote: <vote>"
+    gui-slot: 16
+    gui-item: GOLDEN_APPLE
+    countdown: 30
+    placeholder-label: "<gold>UltraOP"
+    items:
+      - material: NETHERITE_PICKAXE
+        amount: 1
+        name: "<gold><bold>Lava Rising Pickaxe"
+        enchantments:
+          - "efficiency:10"
+      - material: COOKED_BEEF
+        amount: 64
+      - material: DIAMOND
+        amount: 64
+      - material: IRON_INGOT
+        amount: 64
+      - material: COBBLESTONE
+        amount: 576
+      - material: OAK_LOG
+        amount: 64
+      - material: BOW
+        amount: 1
+        name: "<gold><bold>Lava Rising Bow"
+        enchantments:
+          - "power:5"
+      - material: ARROW
+        amount: 64
+      - material: GOLDEN_APPLE
+        amount: 4
+      - material: GOLDEN_CARROT
+        amount: 24
